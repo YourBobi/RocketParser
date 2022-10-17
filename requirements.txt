@@ -1,0 +1,8 @@
+bs4
+requests
+lxml
+selenium
+webdriver_manager
+geopy
+deep_translator
+tqdm

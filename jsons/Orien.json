@@ -1,0 +1,290 @@
+[
+  {
+    "address": "Esmeralda 940 L.4 - Valpara\u00edso",
+    "latlon": [
+      -71.625896,
+      -33.041008
+    ],
+    "name": "Valpara\u00edso",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 08:50 - 14:10 15:00-17:10",
+      "fri 08:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "San Antonio 399 - Santiago",
+    "latlon": [
+      -70.65260126676306,
+      -33.43832688077745
+    ],
+    "name": "Santiago",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Bernardo O Higgins 479 - San Fernando",
+    "latlon": [
+      -70.985833,
+      -34.589468
+    ],
+    "name": "San Fernando",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Claudina Urrutia 356 - Cauquenes",
+    "latlon": [
+      -72.314618,
+      -35.968138
+    ],
+    "name": "Cauquenes",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Merced 263 - Curic\u00f3",
+    "latlon": [
+      -71.24058588476015,
+      -34.98461748036257
+    ],
+    "name": "Curic\u00f3",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Quechereguas 1783 - Molina",
+    "latlon": [
+      -71.28241558421793,
+      -35.11295378033085
+    ],
+    "name": "Molina",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Maip\u00fa 360 - Linares",
+    "latlon": [
+      -71.60309936671447,
+      -35.847349080155915
+    ],
+    "name": "Linares",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Anibal Pinto 879 - Parral",
+    "latlon": [
+      -71.82466036670827,
+      -36.14100368008951
+    ],
+    "name": "Parral",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Arturo Prat 2639 - San Javier",
+    "latlon": [
+      -71.73882276671965,
+      -35.59437328021466
+    ],
+    "name": "San Javier",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Montt 262 - Constituci\u00f3n",
+    "latlon": [
+      -72.41846583174838,
+      -35.330429180277605
+    ],
+    "name": "Constituci\u00f3n",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Plaza de Armas s/n - Curepto",
+    "latlon": [
+      -72.02278090744015,
+      -35.093683113904646
+    ],
+    "name": "Curepto",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Huamachuco 810 - San Clemente",
+    "latlon": [
+      -71.49241739950547,
+      -35.53831967525025
+    ],
+    "name": "San Clemente",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "14 Oriente 968 - Talca",
+    "latlon": [
+      -71.64955616672312,
+      -35.430132980253575
+    ],
+    "name": "Talca - 14 Oriente",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 17:10",
+      "fri 8:50 - 17:10"
+    ]
+  },
+  {
+    "address": "Valdivia 320 - Los \u00c1ngeles",
+    "latlon": [
+      -72.35683556668,
+      -37.46984977981619
+    ],
+    "name": "Los \u00c1ngeles",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Barros Arana 519 - Concepci\u00f3n",
+    "latlon": [
+      -73.06089423171707,
+      -36.82717097994286
+    ],
+    "name": "Concepci\u00f3n",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "18 de Septiembre 618 - Chill\u00e1n",
+    "latlon": [
+      -72.10891433258743,
+      -36.60729041556832
+    ],
+    "name": "Chill\u00e1n",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 08:50 - 14:10 15:00-17:10",
+      "fri 08:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Manuel Bulnes 649, local 2A - Temuco",
+    "latlon": [
+      -72.59375619494185,
+      -38.74014213331328
+    ],
+    "name": "Temuco",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 08:50 - 14:10 15:00-17:10",
+      "fri 08:50 - 14:10 15:00-17:10"
+    ]
+  },
+  {
+    "address": "Antonio Varas 472 - Puerto Montt",
+    "latlon": [
+      -72.94546736658977,
+      -41.472367679256436
+    ],
+    "name": "Puerto Montt",
+    "phones": [
+      "600 200 0015",
+      "+56 71 220 7838"
+    ],
+    "working_hours": [
+      "mon-thu 8:50 - 14:10 15:00-17:10",
+      "fri 8:50 - 14:10 15:00-17:10"
+    ]
+  }
+]
