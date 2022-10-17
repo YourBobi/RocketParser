@@ -88,12 +88,13 @@ if __name__ == '__main__':
    ```
 
 ### Методы класса
-   ```python
-    ori.to_list_of_dict()       # Вывод данных в виде списка словарей
-    ori.to_json("Orien.json")   # Запись в json 
 
-    ori.__set_href()            # Поиск и запись ссылок на магазин
-    ori.__set_oriencoops()      # Запись магазинов в self.orien_list
+   ```python
+    ori.to_list_of_dict()  # Вывод данных в виде списка словарей
+ori.to_json("Orien.json")  # Запись в json 
+
+ori.__set_href()  # Поиск и запись ссылок на магазин
+ori.__set_shops()  # Запись магазинов в self.shops_list
    ```
 
 ### Основные поля
@@ -127,12 +128,13 @@ if __name__ == '__main__':
    ```
 
 ### Методы класса
-   ```python
-    som.to_list_of_dict()       # Вывод данных в виде списка словарей
-    som.to_json("Som.json")   # Запись в json 
 
-    som.__set_href()            # Поиск и запись ссылок на магазин
-    som.__set_soms()      # Запись магазинов в self.som_list
+   ```python
+    som.to_list_of_dict()  # Вывод данных в виде списка словарей
+som.to_json("Som.json")  # Запись в json 
+
+som.__set_href()  # Поиск и запись ссылок на магазин
+som.__set_shops()  # Запись магазинов в self.shops_list
    ```
 
 ### Основные поля

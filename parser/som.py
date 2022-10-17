@@ -5,16 +5,20 @@ from .rocketparser import RocketParser, JsonObject
 
 
 class SomList(RocketParser):
-    hrefs: list[str] = []
-    som_list: list[JsonObject] = []
+    hrefs: list[str] = []              # Ссылки на страницы
+    shops_list: list[JsonObject] = []  # List of JsonObject with shop info
 
     def __init__(self, url: str, header: dict = None):
         super().__init__(url, header=header)
         self.home_url = url
-        self.__set_soms()
+        self.__set_shops()
         self.__set_city_list()
 
-    def __set_soms(self):
+    def __set_shops(self):
+        """
+        Запись ссылок на магазины в self.shops_href
+        :return: None
+        """
         divs = self.body.find("div", attrs={'class': 'col-xs-12 col-sm-6 citys-box'}).find_all("div", class_='col-sm-12')
         city_divs = []
 
@@ -29,19 +33,34 @@ class SomList(RocketParser):
         #         e.submit(self.get_div_of_l, city_id)
 
         for el in city_divs:
-            self.hrefs.append(el.find("a").get("href"))
+            self.hrefs.append(self.url[:15] + el.find("a").get("href"))
 
     def get_div_of_l(self, city_id, city_divs):
+        """
+        Запрос с cookie который добавляет найденные divs в city_divs
+        :param city_id: id города
+        :param city_divs: list
+        :return: None
+        """
         ck = {'BITRIX_SM_CITY_ID': f'{city_id}'}
         shop = RocketParser(self.url, cookies=ck)
         city_divs.extend(shop.body.find_all("div", class_="shops-col shops-button"))
 
     def __set_city_list(self):
+        """
+        Запись объектов shops в self.shops.list
+        :return: None
+        """
         for i in tqdm(range(len(self.hrefs)), desc=f"Парсинг {self.url}……", ascii=False, ncols=120):
-            self.som_list.append(self.make_natura(self.hrefs[i]))
+            self.shops_list.append(self.make_shop(self.hrefs[i]))
 
-    def make_natura(self, city_href: str):
-        shop = JsonObject(self.url[:15] + city_href)
+    def make_shop(self, href: str):
+        """
+        Создание объекта JsonObject и парсинг в него информации
+        :param href: Ссылка на магазин
+        :return: shop = JsonObject()
+        """
+        shop = JsonObject(href)
         latlon = self.__find_latlon(shop.body)
         name = shop.body.find("h1").get_text(strip=True)
         ad_ph_w = shop.body.find("table", class_='shop-info-table').find_all("td")
@@ -71,7 +90,7 @@ class SomList(RocketParser):
         return [f"пн – вс {hours[0]}:{hours[1]} – {hours[2]}:{hours[3]}"] if len(hours) > 3 else []
 
     def to_list_of_dict(self):
-        return [obj.to_dict() for obj in self.som_list]
+        return [obj.to_dict() for obj in self.shops_list]
 
     def to_json(self, link: str = "JsonObject.json"):
         with open(link, 'w', encoding="utf-8") as file:

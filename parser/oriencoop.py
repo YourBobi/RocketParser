@@ -5,15 +5,19 @@ from tqdm import tqdm
 
 
 class OriencoopList(RocketParser):
-    hrefs: list[str] = []
-    orien_list: list[JsonObject] = []
+    hrefs: list[str] = []               # Ссылки на страницы
+    shops_list: list[JsonObject] = []   # List of JsonObject with shop info
 
     def __init__(self, url: str, header: dict = None):
         super().__init__(url, header=header)
         self.__set_href()
-        self.__set_oriencoops()
+        self.__set_shops()
 
     def __set_href(self):
+        """
+        Запись ссылок на магазины в self.shops_href
+        :return: None
+        """
         all_a = []
         for item in self.body.find_all("ul", class_="c-list c-accordion"):
             all_a.extend(item.find_all("a"))
@@ -23,11 +27,20 @@ class OriencoopList(RocketParser):
                 href = self.url[:20] + a.get('href')
                 self.hrefs.append(href)
 
-    def __set_oriencoops(self):
+    def __set_shops(self):
+        """
+        Запись объектов shops в self.shops.list
+        :return: None
+        """
         for i in tqdm(range(len(self.hrefs)), desc=f"Парсинг {self.url}…", ascii=False, ncols=120):
-            self.orien_list.append(self.make_ori(self.hrefs[i]))
+            self.shops_list.append(self.make_shop(self.hrefs[i]))
 
-    def make_ori(self, href: str):
+    def make_shop(self, href: str):
+        """
+        Создание объекта JsonObject и парсинг в него информации
+        :param href: Ссылка на магазин
+        :return: shop = JsonObject()
+        """
         shop = JsonObject(href)
         div = shop.body.find("div", attrs={'class': 's-dato'})
         span = div.find_all("span")
@@ -49,6 +62,11 @@ class OriencoopList(RocketParser):
         return shop
 
     def __find_time(self, span):
+        """
+        Find time in span
+        :param span: bs4 object
+        :return: correct list of times
+        """
         time = re.findall(r"[-+]?\d*\.?\d+|\d+",
                           span[3].get_text(strip=True) + span[4].get_text(strip=True))
         time = [hour.replace('.', ':') for hour in time]
@@ -61,13 +79,28 @@ class OriencoopList(RocketParser):
         return working_hours
 
     def __find_latlon(self, iframe):
+        """
+        Find latlon in span
+        :param iframe:
+        :return: correct list of latlon
+        """
+
         google_map = iframe['src']
         location = re.split('!', google_map)
         return [float(location[5][2:]), float(location[6][2:])]
 
     def to_list_of_dict(self):
-        return [obj.to_dict() for obj in self.orien_list]
+        """
+        List of dict
+        :return: Oriencoop object in list of dict format
+        """
+        return [obj.to_dict() for obj in self.shops_list]
 
     def to_json(self, link: str = "JsonObject.json"):
+        """
+        Save data in json format
+        :param link: link of save file
+        :return: None
+        """
         with open(link, 'w', encoding="utf-8") as file:
             json.dump(self.to_list_of_dict(), file, indent=2)

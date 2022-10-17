@@ -13,14 +13,15 @@ from deep_translator import GoogleTranslator
 from tqdm import tqdm
 
 
+# Драйвер для полной загрузки страницы
 driver_exe = ChromeDriverManager().install()
 options = Options()
 options.add_argument("--headless")
 
 
 class NaturaSiberica(RocketParser):
-    hrefs: list[str] = []
-    natura_list: list[JsonObject] = []
+    hrefs: list[str] = []              # Ссылки на страницы
+    shops_list: list[JsonObject] = []  # List of JsonObject with shop info
 
     def __init__(self, url: str, header: dict = None):
         super().__init__(url, header=header)
@@ -32,6 +33,10 @@ class NaturaSiberica(RocketParser):
         self.driver.close()
 
     def __set_href(self):
+        """
+        Запись ссылок на магазины в self.shops_href
+        :return: None
+        """
         all_a = []
         for item in self.body.find_all("ul", class_="card-list"):
             all_a.extend(item.find_all("a"))
@@ -41,11 +46,18 @@ class NaturaSiberica(RocketParser):
             self.hrefs.append(href)
 
     def __set_natura(self):
+        """
+        Запись объектов shops в self.shops.list
+        :return: None
+        """
         for i in tqdm(range(len(self.hrefs)), desc=f"Парсинг {self.url}……", ascii=False, ncols=120):
-            self.natura_list.append(self.make_natura(self.hrefs[i]))
+            self.shops_list.append(self.make_shop(self.hrefs[i]))
 
-    def make_natura(self, href: str):
-
+    def make_shop(self, href: str):
+        """
+        Создание объекта JsonObject и парсинг в него информации
+        :param href: Ссылка на магазин
+        :return: shop = JsonObject()"""
         self.driver.get(href)
         shop = self.load_natura(href, 0.5)
         address = shop.body.find("span", class_="select2-selection__rendered").get_text(strip=True)
@@ -67,24 +79,40 @@ class NaturaSiberica(RocketParser):
         location = geocoder.arcgis(address)
         return location.latlng
 
-    def __find_time(self, natura):
-        hours_string = natura.body.find("div", id="schedule1").get_text(strip=True)
+    def __find_time(self, shop: JsonObject):
+        """
+        Find time in shop object
+        :param span: bs4 object
+        :return: correct list of times
+        """
+        hours_string = shop.body.find("div", id="schedule1").get_text(strip=True)
         hours = re.findall(r"\d+", hours_string)
         if len(hours) > 3:
             return [f"пн-вс {hours[0]}:{hours[1]}-{hours[2]}:{hours[3]}"]
         return []
 
-    def __find_phones(self, natura):
+    def __find_phones(self, shop: JsonObject):
+        """
+        Find phones in shop object
+        :param span: bs4 object
+        :return: correct list of phones
+        """
         phones = []
 
-        for p in natura.body.find_all("p", id="shop-phone-by-city"):
+        for p in shop.body.find_all("p", id="shop-phone-by-city"):
             phone = re.findall(r'\d+', p.get_text(strip=True))
             phone = '7' + ''.join(phone)[1:]
             phones.append(phone)
 
         return phones
 
-    def load_natura(self, href, timeout):
+    def load_natura(self, href: str, timeout: float):
+        """
+        Прогружает страницу пока не появятся данные
+        :param href: ссылка на shop
+        :param timeout: стартовое время загрузки
+        :return: shop object
+        """
         time.sleep(timeout)
 
         natura = JsonObject(href, source=self.driver.page_source)
@@ -97,8 +125,17 @@ class NaturaSiberica(RocketParser):
         return natura
 
     def to_list_of_dict(self):
-        return [obj.to_dict() for obj in self.natura_list]
+        """
+        List of dict
+        :return: Oriencoop object in list of dict format
+        """
+        return [obj.to_dict() for obj in self.shops_list]
 
     def to_json(self, link: str = "JsonObject.json"):
+        """
+        Save data in json format
+        :param link: link of save file
+        :return: None
+        """
         with open(link, 'w', encoding="utf-8") as file:
             json.dump(self.to_list_of_dict(), file, indent=2)

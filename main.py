@@ -7,11 +7,15 @@ if __name__ == '__main__':
     url = 'https://oriencoop.cl/sucursales.htm'
     url1 = 'https://som1.ru/shops/'
     url2 = 'https://naturasiberica.ru/our-shops/'
+
+    # Создание объектов
     ori = OriencoopList(url)
-    ori.to_json("./jsons/Orien.json")
     som = SomList(url1)
-    som.to_json("./jsons/Som.json")
     nat = NaturaSiberica(url2)
+
+    # Создание файлов и запись данных
+    ori.to_json("./jsons/Orien.json")
+    som.to_json("./jsons/Som.json")
     nat.to_json("./jsons/Natura.json")
 
 

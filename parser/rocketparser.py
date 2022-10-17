@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import bs4
 import requests
 
+# Standard header
 HEADERS = requests.utils.default_headers()
 HEADERS.update({'User-Agent': 'Mozilla/5.0', })
 
@@ -11,7 +12,14 @@ class RocketParser:
     footer: bs4.element.Tag
 
     def __init__(self, url: str, *, header: dict = HEADERS, page_source: str = None, cookies: dict = None):
+        """
+        Constructor of class
 
+        :param url: url of site
+        :param header: header for http requests
+        :param page_source: http content of page
+        :param cookies: cookies
+        """
         self.url = url
         self.header = header if header else HEADERS
         self.page_source = page_source
@@ -19,6 +27,11 @@ class RocketParser:
         self.parsing_rss()
 
     def parsing_rss(self):
+        """
+        Set body and footer of page content.
+
+        :return: None
+        """
         try:
             if not self.page_source:
                 self.page_source = requests.get(self.url, headers=self.header, cookies=self.cookies).text
@@ -33,11 +46,11 @@ class RocketParser:
 
 
 class JsonObject(RocketParser):
-    address: str
-    latlon: list[float]
-    name: str
-    phones: list[str]
-    working_hours: list[str]
+    address: str = ""
+    latlon: list[float] = []
+    name: str = ""
+    phones: list[str] = []
+    working_hours: list[str] = []
 
     def __init__(self, url: str, header: dict = None, source: str = None, cookies: dict = None):
         super().__init__(url, header=header, page_source=source, cookies=cookies)
@@ -58,6 +71,10 @@ class JsonObject(RocketParser):
         self.working_hours = working_hours
 
     def to_dict(self):
+        """
+        Return object in dict format
+        :return: object dict
+        """
         return {"address": self.address,
                 "latlon": self.latlon,
                 "name": self.name,
